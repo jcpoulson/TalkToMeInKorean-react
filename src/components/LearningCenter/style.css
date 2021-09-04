@@ -1,0 +1,13 @@
+.continue-learning {
+    padding: 10px 28px;
+    border-radius: 100px;
+    color: white;
+    background-color: #35509a;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.lesson-box {
+    display: flex;
+    justify-content: start;
+}
