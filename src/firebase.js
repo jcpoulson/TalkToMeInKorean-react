@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, doc, setDoc, updateDoc, deleteField } from "firebase/firestore";
+import { getFirestore, collection, getDocs, doc, setDoc, updateDoc, deleteField, getDoc } from "firebase/firestore";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -67,9 +68,41 @@ const deleteLesson = async (level, lesson) => {
   })
 }
 
+
+/* USER AUTHENTICATION METHODS */
+
+const auth = getAuth();
+
+
+/* SIGN IN METHOD */
+const signIn = async (email, password) => {
+  const preAuthUser = await signInWithEmailAndPassword(auth, email, password)
+  const authenticatedUser = preAuthUser.user;
+  
+  const userRef = doc(db, "users", authenticatedUser.email);
+  const userData = await getDoc(userRef);
+  
+  return userData.data()
+}
+
+const signUp = async (email, password, firstName, lastName) => {
+  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  
+  const createdUser = await setDoc(doc(db, 'users', userCredential.user.email), {
+    email: userCredential.user.email,
+    firstName: firstName,
+    lastName: lastName,
+    picture: "/default/path"
+  })
+}
+
+
+
 export {
   getLevels,
   addLevel,
   addLesson,
-  deleteLesson
+  deleteLesson,
+  signIn,
+  signUp
 }

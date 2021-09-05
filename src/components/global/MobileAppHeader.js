@@ -7,6 +7,7 @@ import BellOutlined from '@ant-design/icons/BellOutlined';
 import Hyunwoo from '../../assets/Hyunwoo-Sun.jpg';
 import MobileMenu from '../../assets/mobile-menu.png';
 import TTMIKLogo from '../../assets/ttmik-logo.png';
+import App from '../../App';
 
 
 const MobileAppHeader = () => {
@@ -40,7 +41,14 @@ const MobileAppHeader = () => {
                 </Col>
             </Row>
             
-            <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={[
+            <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={AppState.user.firstName ?
+            [
+                <Button key="submit" type="primary" onClick={() => AppState.setUser({})}>
+                    <NavLink to="/">Sign Out</NavLink>
+                </Button>
+            ]
+            :
+            [
                 <Button >
                     <NavLink to="/signin">Sign Up</NavLink>
                 </Button>,

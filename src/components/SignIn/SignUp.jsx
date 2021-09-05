@@ -8,9 +8,11 @@ import { AppContext } from '../../AppContext';
 import AppHeader from '../global/AppHeader';
 import MobileAppHeader from '../global/MobileAppHeader';
 
-const SignIn = () => {
+const SignUp = () => {
     const AppState = useContext(AppContext);
     const [email, setEmail] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [password, setPassword] = useState('');
 
 
@@ -36,6 +38,24 @@ const SignIn = () => {
                 </Form.Item>
 
                 <Form.Item
+                    label="First Name"
+                    name="firstname"
+                    id="firstname"
+                    onChange={(e) => setFirstName(e.target.value)}
+                >
+                    <Input className="firstname"/>
+                </Form.Item>
+
+                <Form.Item
+                    label="Last Name"
+                    name="lastname"
+                    id="lastname"
+                    onChange={(e) => setLastName(e.target.value)}
+                >
+                    <Input className="lastname"/>
+                </Form.Item>
+
+                <Form.Item
                     label="Password"
                     name="password"
                     id="password"
@@ -47,17 +67,17 @@ const SignIn = () => {
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                     <NavLink to="/">
                         <Button type="primary" onClick={async () => {
-                            const signIn = await AppState.signIn(email, password)
-                            AppState.setUser(signIn)
-                                }
-                            }>
+                            const userSignUp = await AppState.signUp(email, password, firstName, lastName);
+                            const userSignIn = await AppState.signIn(email, password);
+                            AppState.setUser(userSignIn);
+                        }}>
                         Submit
                         </Button>
                     </NavLink>
                 </Form.Item>
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                    <NavLink to="/signup">
-                        Sign Up
+                    <NavLink to="/signin">
+                        Already Have an Account, Sign in
                     </NavLink>
                 </Form.Item>
                 </Form>
@@ -66,4 +86,4 @@ const SignIn = () => {
     )
 }
 
-export default SignIn;
+export default SignUp;

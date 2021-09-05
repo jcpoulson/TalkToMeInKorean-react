@@ -22,7 +22,12 @@ const AppHeader = () => {
                 <Col style={style} xl={{ span: 0}} xxl={{ span: 3}}></Col>
                 <Col style={style} xl={{ span: 12 }} xxl={{ span: 5}}>
                     <Menu mode="horizontal" className="top-nav-menu">
-                        { AppState.user.firstName ? <Menu.Item>{AppState.user.firstName} {AppState.user.lastName}</Menu.Item> : <Menu.Item><NavLink to="/signin">Sign In</NavLink></Menu.Item>}
+                        { AppState.user.firstName ? <SubMenu title={`${AppState.user.firstName} ${AppState.user.lastName}`}>
+                            <Menu.Item onClick={() => AppState.setUser({})}><NavLink to="/">Sign Out</NavLink></Menu.Item>
+                        </SubMenu> 
+                        : 
+                        <Menu.Item><NavLink to="/signin">Sign In</NavLink></Menu.Item>
+                        }
                         <SubMenu title="Support">
                             
                                 <Menu.Item><NavLink to="/coming-soon">FAQ</NavLink></Menu.Item>
