@@ -64,16 +64,32 @@ const SignUp = () => {
                     <Input.Password className="password"/>
                 </Form.Item>
 
-                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                    <NavLink to="/">
-                        <Button type="primary" onClick={async () => {
-                            const userSignUp = await AppState.signUp(email, password, firstName, lastName);
-                            const userSignIn = await AppState.signIn(email, password);
-                            AppState.setUser(userSignIn);
-                        }}>
-                        Submit
-                        </Button>
-                    </NavLink>
+                <Form.Item
+                    name="error"
+                >
+                    <h3>Password must be 6 characters long</h3>
+                </Form.Item>
+
+
+                <Form.Item
+                    name="error"
+                >
+                    <h3 style={{color: "red", display: "none"}} id="account-error">Error: Account Already Exists or Insufficient Information</h3>
+                </Form.Item>
+
+                <Form.Item wrapperCol={{ offset: 8, span: 16 }}> 
+                    <Button type="primary" onClick={async () => {
+                        try {
+                        const userSignUp = await AppState.signUp(email, password, firstName, lastName);
+                        const userSignIn = await AppState.signIn(email, password);
+                        AppState.setUser(userSignIn);
+                        } catch (error) {
+                        console.log(error)
+                        document.getElementById('account-error').style.display = ''
+                        }
+                    }}>
+                    Submit
+                    </Button> 
                 </Form.Item>
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                     <NavLink to="/signin">

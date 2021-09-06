@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { Form, Input, InputNumber, Button, Checkbox, Row } from 'antd';
 import { AppContext } from '../../AppContext';
 
@@ -10,7 +10,8 @@ import MobileAppHeader from '../global/MobileAppHeader';
 
 const SignIn = () => {
     const AppState = useContext(AppContext);
-    const [email, setEmail] = useState('');
+    const history = useHistory();
+    const [email, setEmail] = useState(AppState.user.email || '');
     const [password, setPassword] = useState('');
 
 
@@ -32,7 +33,7 @@ const SignIn = () => {
                     className="email"
                     onChange={(e) => setEmail(e.target.value)}
                 >
-                    <Input className="email"/>
+                    <Input className="email" defaultValue={email}/>
                 </Form.Item>
 
                 <Form.Item
@@ -44,16 +45,25 @@ const SignIn = () => {
                     <Input.Password className="password"/>
                 </Form.Item>
 
+                <Form.Item
+                    name="error"
+                >
+                    <h3 style={{color: "red", display: "none"}} id="account-error">Error: Account Not Found</h3>
+                </Form.Item>
+
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                    <NavLink to="/">
                         <Button type="primary" onClick={async () => {
-                            const signIn = await AppState.signIn(email, password)
-                            AppState.setUser(signIn)
+                            try {
+                                const signIn = await AppState.signIn(email, password)
+                                AppState.setUser(signIn)
+                                history.push('/');
+                            } catch (error) {
+                                document.getElementById('account-error').style.display = ''
+                            }
                                 }
                             }>
                         Submit
                         </Button>
-                    </NavLink>
                 </Form.Item>
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                     <NavLink to="/signup">

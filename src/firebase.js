@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, doc, setDoc, updateDoc, deleteField, getDoc } from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,6 +17,16 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore();
+const auth = getAuth();
+const storage = getStorage(firebaseApp);
+
+
+/* CRUD OPERATIONS FOR THE DATABASE */
+
+/**
+     * Returns the main level and lesson data, no authentication or parameters required
+     * @retun {items} - An array containing the level and lesson data
+*/
 
 const getLevels = async () => {
   const items = []
@@ -25,13 +36,9 @@ const getLevels = async () => {
 }
 
 
-/* CRUD OPERATIONS FOR THE DATABASE */
-
-
 /**
      * Adds a completely new level to the database
-     * @param {level} - The level the user wants added, this will overwrite an existing level, SO BE CAREFUL
-     * @param {levelData} - An object containing the lesson data, try and add at least one lesson object to avoid messy data
+     * @return {levelData} - An object containing the lesson data, try and add at least one lesson object to avoid messy data
 */
 const addLevel = async (level, levelData) => {
   await setDoc(doc(db, "levels", `level${level}`), levelData)
@@ -69,22 +76,24 @@ const deleteLesson = async (level, lesson) => {
 }
 
 
-/* USER AUTHENTICATION METHODS */
+/* USER AUTHENTICATION METHODS */ 
 
-const auth = getAuth();
 
+// Be sure to set up error handling on both these methods
 
 /* SIGN IN METHOD */
 const signIn = async (email, password) => {
-  const preAuthUser = await signInWithEmailAndPassword(auth, email, password)
-  const authenticatedUser = preAuthUser.user;
-  
-  const userRef = doc(db, "users", authenticatedUser.email);
-  const userData = await getDoc(userRef);
-  
-  return userData.data()
+    const preAuthUser = await signInWithEmailAndPassword(auth, email, password)
+    const authenticatedUser = preAuthUser.user;
+    
+    const userRef = doc(db, "users", authenticatedUser.email);
+    const userData = await getDoc(userRef);
+    
+    return userData.data()
 }
 
+
+/* SIGN UP METHOD */
 const signUp = async (email, password, firstName, lastName) => {
   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
   
@@ -97,6 +106,16 @@ const signUp = async (email, password, firstName, lastName) => {
 }
 
 
+/* UPDATE USER METHOD */
+const updateUser = async (email, firstName, lastName) => {
+  const userRef = doc(db, 'users', email);
+
+  await updateDoc(userRef, {
+    firstName: firstName,
+    lastName: lastName
+  });
+}
+
 
 export {
   getLevels,
@@ -104,5 +123,6 @@ export {
   addLesson,
   deleteLesson,
   signIn,
-  signUp
+  signUp,
+  updateUser
 }

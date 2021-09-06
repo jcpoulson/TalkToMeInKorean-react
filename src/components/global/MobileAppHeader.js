@@ -66,6 +66,7 @@ const MobileAppHeader = () => {
                         <Menu.Item><NavLink to="/coming-soon"><h3><b>Pricing</b></h3></NavLink></Menu.Item>
                         <Menu.Item><NavLink to="/coming-soon"><h3><b>Courses</b></h3></NavLink></Menu.Item>
                         <Menu.Item><NavLink to="/coming-soon"><h3><b>Bookstore</b></h3></NavLink></Menu.Item>
+                        <Menu.Item><NavLink to="/profile"><h3><b>My Profile</b></h3></NavLink></Menu.Item>
                     </Menu>
             </Modal>
         </Layout>
