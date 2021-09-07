@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { AppContext } from './AppContext';
-import { getLevels, signIn, signUp, updateUser } from './firebase';
+import { getLevels, signIn, signUp, updateUser, uploadImage } from './firebase';
 
 // Views / Components
 import HomePage from './components/HomePage/HomePage';
@@ -22,7 +22,7 @@ const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-        <AppContext.Provider value={{width, user, setUser, getLevels, signIn, signUp, updateUser}}>
+        <AppContext.Provider value={{width, user, setUser, getLevels, signIn, signUp, updateUser, uploadImage}}>
 
           <Route exact path="/" component={HomePage} />
           <Route path="/learningcenter" component={LearningCenter} />

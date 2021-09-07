@@ -22,7 +22,7 @@ const Profile = () => {
                         <Row justify="center" align="middle" gutter={1} style={{minHeight: "360px"}}>
                             <Col style={colStyle} xs={{span: "24"}} sm={{span: "8"}} xl={{span: "5"}}>
                                 <div style={{display: "flex", flexDirection: "column", justifyContent: "center"}}>
-                                    <Avatar style={{marginBottom: "10%"}} size={100} src={Hyunwoo} />
+                                    <Avatar style={{marginBottom: "10%"}} size={100} src={AppState.user.picture} />
                                     <h1>{AppState.user.firstName} {AppState.user.lastName}</h1>
                                     <h4>{AppState.user.email}</h4>
                                 </div>

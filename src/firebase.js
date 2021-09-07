@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, doc, setDoc, updateDoc, deleteField, getDoc } from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { getStorage } from "firebase/storage";
+import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,7 +21,11 @@ const auth = getAuth();
 const storage = getStorage(firebaseApp);
 
 
-/* CRUD OPERATIONS FOR THE DATABASE */
+/*
+
+  CRUD OPERATIONS FOR THE DATABASE
+
+*/
 
 /**
      * Returns the main level and lesson data, no authentication or parameters required
@@ -76,10 +80,12 @@ const deleteLesson = async (level, lesson) => {
 }
 
 
-/* USER AUTHENTICATION METHODS */ 
+/* 
 
+  USER AUTHENTICATION METHODS 
 
-// Be sure to set up error handling on both these methods
+*/ 
+
 
 /* SIGN IN METHOD */
 const signIn = async (email, password) => {
@@ -117,6 +123,26 @@ const updateUser = async (email, firstName, lastName) => {
 }
 
 
+/* 
+
+  STORAGE BUCKET OPERATIONS
+
+*/
+
+
+const uploadImage = async (photo, email) => {
+  const userRef = doc(db, 'users', email);
+  const imagesRef = ref(storage, '/images/' + photo.name + email);
+  uploadBytes(imagesRef, photo).then((snapshot) => {
+    getDownloadURL(imagesRef).then(data => {
+      updateDoc(userRef, {
+        picture: data
+      })
+    })
+  });
+}
+
+
 export {
   getLevels,
   addLevel,
@@ -124,5 +150,6 @@ export {
   deleteLesson,
   signIn,
   signUp,
-  updateUser
+  updateUser,
+  uploadImage
 }

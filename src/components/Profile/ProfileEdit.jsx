@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import { Form, Input, InputNumber, Button, Checkbox, Row, Col, Avatar } from 'antd';
+import { Form, Input, InputNumber, Button, Checkbox, Row, Col, Avatar, Upload } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 import { AppContext } from '../../AppContext';
 
 import Hyunwoo from '../../assets/Hyunwoo-Sun.jpg';
@@ -15,8 +16,26 @@ const ProfileEdit = () => {
     const history = useHistory();
     const [firstName, setFirstName] = useState(AppState.user.firstName);
     const [lastName, setLastName] = useState(AppState.user.lastName);
+    const [selectedPic, setSelectedPic] = useState({})
 
-    const colStyle = {backgroundColor: "#fff", minHeight: "280px", padding: "2%"}
+    const colStyle = {backgroundColor: "#fff", minHeight: "280px", padding: "2%"};
+
+    const props = {
+        action: '//jsonplaceholder.typicode.com/posts/',
+        listType: 'picture',
+        previewFile(file) {
+            console.log('Your upload file:', file);
+            setSelectedPic(file)
+          // Your process logic. Here we just mock to the same file
+          return fetch('https://next.json-generator.com/api/json/get/4ytyBoLK8', {
+            method: 'POST',
+            body: file,
+          })
+            .then(res => res.json())
+            .then(({ thumbnail }) => thumbnail)
+            .catch(error => console.log("It's no big deal, don't worry about the errors here"))
+        },
+      };
     
 
     return (
@@ -26,8 +45,10 @@ const ProfileEdit = () => {
             <Row justify="center">
                 <Col style={colStyle} xs={{span: "12"}} sm={{span: "8"}} xl={{span: "5"}}>
                     <div style={{display: "flex", flexDirection: "column", justifyContent: "center"}}>
-                        <Avatar style={{marginBottom: "10%"}} size={100} src={Hyunwoo} />
-                        <a>Change Profile Picture</a>
+                        <Avatar style={{marginBottom: "10%"}} size={100} src={AppState.user.picture} />
+                        <Upload {...props}>
+                            <Button icon={<UploadOutlined />}>Upload</Button>
+                        </Upload>
                         <h1>{AppState.user.firstName} {AppState.user.lastName}</h1>
                         <h4>{AppState.user.email}</h4>
                     </div>
@@ -72,7 +93,7 @@ const ProfileEdit = () => {
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}> 
                     <Button type="primary" onClick={async () => {
                             try {
-                                const updateUser = await AppState.updateUser(AppState.user.email, firstName, lastName)
+                                const updatePicture = await AppState.uploadImage(selectedPic, AppState.user.email);
                                 history.push('/signin');
                             } catch (error) {
                                 document.getElementById('account-error').style.display = ''
