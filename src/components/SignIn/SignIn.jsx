@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { Form, Input, InputNumber, Button, Checkbox, Row } from 'antd';
+import Cookies from 'js-cookie';
 import { AppContext } from '../../AppContext';
 
 
@@ -55,7 +56,8 @@ const SignIn = () => {
                         <Button type="primary" onClick={async () => {
                             try {
                                 const signIn = await AppState.signIn(email, password)
-                                AppState.setUser(signIn)
+                                AppState.setUser(signIn);
+                                Cookies.set('authenticatedUser', JSON.stringify(signIn), { expires: 1 });
                                 history.push('/');
                             } catch (error) {
                                 document.getElementById('account-error').style.display = ''

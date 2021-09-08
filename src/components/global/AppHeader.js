@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import { Row, Col, Layout } from 'antd';
 import { Menu } from 'antd';
 import SubMenu from 'antd/lib/menu/SubMenu';
@@ -24,7 +25,10 @@ const AppHeader = () => {
                     <Menu mode="horizontal" className="top-nav-menu">
                         { AppState.user.firstName ? <SubMenu title={`${AppState.user.firstName} ${AppState.user.lastName}`}>
                             <Menu.Item><NavLink to="/profile">User Profile</NavLink></Menu.Item>
-                            <Menu.Item onClick={() => AppState.setUser({})}><NavLink to="/">Sign Out</NavLink></Menu.Item>
+                            <Menu.Item onClick={() => {
+                                AppState.setUser({})
+                                Cookies.remove('authenticatedUser')
+                                }}><NavLink to="/">Sign Out</NavLink></Menu.Item>
                         </SubMenu> 
                         : 
                         <Menu.Item><NavLink to="/signin">Sign In</NavLink></Menu.Item>

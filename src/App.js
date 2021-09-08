@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import { AppContext } from './AppContext';
 import { getLevels, signIn, signUp, updateUser, uploadImage } from './firebase';
 
@@ -17,7 +18,7 @@ import useWindowDimensions from './components/global/useWindowDimensions';
 
 const App = () => {
   const { width } = useWindowDimensions();
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(Cookies.getJSON('authenticatedUser') || {} )
 
   return (
     <div className="App">

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
-import { AppContext } from '../../AppContext';
 import { NavLink } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { AppContext } from '../../AppContext';
 import { Row, Col, Layout, Modal, Button, Menu } from 'antd';
 import BellOutlined from '@ant-design/icons/BellOutlined';
 
@@ -43,7 +44,10 @@ const MobileAppHeader = () => {
             
             <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={AppState.user.firstName ?
             [
-                <Button key="submit" type="primary" onClick={() => AppState.setUser({})}>
+                <Button key="submit" type="primary" onClick={() => {
+                    AppState.setUser({})
+                    Cookies.remove('authenticatedUser')
+                }}>
                     <NavLink to="/">Sign Out</NavLink>
                 </Button>
             ]
