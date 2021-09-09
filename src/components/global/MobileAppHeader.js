@@ -61,7 +61,7 @@ const MobileAppHeader = () => {
                 </Button>
             ]}>
                 <Row align="middle" className="sidebar-profile-info">
-                    <Col span={12}><img src={Hyunwoo} className="sidebar-profile-pic" alt="Mobile Profile" /></Col>
+                    <Col span={12}><img src={AppState.user.picture} className="sidebar-profile-pic" alt="Mobile Profile" /></Col>
                     { AppState.user.firstName ? <Col span={12}><h1>{AppState.user.firstName} {AppState.user.lastName}</h1></Col> : <Col span={12}><NavLink to="/signin"><h1>Please Sign In</h1></NavLink></Col>}
                 </Row>
                 <Menu>
