@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useHistory } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Form, Input, InputNumber, Button, Checkbox, Row } from 'antd';
 import { AppContext } from '../../AppContext';
@@ -10,6 +10,7 @@ import MobileAppHeader from '../global/MobileAppHeader';
 
 const SignUp = () => {
     const AppState = useContext(AppContext);
+    const history = useHistory();
     const [email, setEmail] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -83,6 +84,7 @@ const SignUp = () => {
                         const userSignUp = await AppState.signUp(email, password, firstName, lastName);
                         const userSignIn = await AppState.signIn(email, password);
                         AppState.setUser(userSignIn);
+                        history.push('/');
                         } catch (error) {
                         console.log(error)
                         document.getElementById('account-error').style.display = ''
