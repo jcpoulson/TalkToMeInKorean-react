@@ -4,10 +4,7 @@ import { AppContext } from '../../../AppContext';
 import "../../Profile/style.css"
 
 
-// Components
-import { NavLink } from 'react-router-dom';
-
-const AccountDetails = () => {
+const AccountDetails = ({setSelectedMenuItem}) => {
     const AppState = useContext(AppContext);
     const colStyle = {backgroundColor: "#fff", height: "280px", padding: "2%"}
 
@@ -15,6 +12,7 @@ const AccountDetails = () => {
         <div>
             {
             AppState.width > 970 ?
+
                 <div className="desktop-view-component">
 
                     {/* Top Row */}
@@ -28,7 +26,7 @@ const AccountDetails = () => {
                         </Col>
                         <Col style={colStyle} xs={{span: "24"}} sm={{span: "16"}} xl={{span: "10"}}>
                             <div style={{display: "flex", justifyContent: "center"}}>
-                                <a style={{backgroundColor: "darkblue", padding: "2%", marginTop: "25%", borderRadius: "30px"}}><strong><NavLink to="/profile-edit" style={{color: "white"}}>Edit Account Information</NavLink></strong></a>
+                                <a style={{backgroundColor: "darkblue", padding: "2%", marginTop: "25%", borderRadius: "30px"}} onClick={() => setSelectedMenuItem("Edit")}><strong>Edit Account Information</strong></a>
                             </div>
                         </Col>
                     </Row>
@@ -39,8 +37,8 @@ const AccountDetails = () => {
                             <div style={{display: "flex", flexDirection: "column", justifyContent: "center", borderTop: "dotted 1px black"}}>
                                 <h1>Billing Address</h1>
                                 <h2>{AppState.user.firstName} {AppState.user.lastName}</h2>
-                                <h4>12243 Parkstream Terrace
-                                    Herndon, VA 20170
+                                <h4>12345 someplace somewhere
+                                    Reston, VA 20190
                                     United States
                                 </h4>
                             </div>
@@ -49,8 +47,8 @@ const AccountDetails = () => {
                         <div style={{display: "flex", flexDirection: "column", justifyContent: "center", borderTop: "dotted 1px black"}}>
                                 <h1>Shipping Address</h1>
                                 <h2>{AppState.user.firstName} {AppState.user.lastName}</h2>
-                                <h4>12243 Parkstream Terrace
-                                    Herndon, VA 20170
+                                <h4>12345 someplace somewhere
+                                    Reston, VA 20190
                                     United States
                                 </h4>
                             </div>
@@ -70,7 +68,7 @@ const AccountDetails = () => {
                         </Col>
                         <Col style={colStyle} xs={{span: "24"}} sm={{span: "16"}} xl={{span: "10"}}>
                             <div style={{display: "flex", justifyContent: "center"}}>
-                                <a style={{backgroundColor: "darkblue", padding: "2%", marginTop: "25%", borderRadius: "30px"}}><strong><NavLink to="/profile-edit" style={{color: "white"}}>Edit Account Information</NavLink></strong></a>
+                                <a style={{backgroundColor: "darkblue", padding: "2%", marginTop: "25%", borderRadius: "30px"}} onClick={() => setSelectedMenuItem("Edit")}><strong>Edit Account Information</strong></a>
                             </div>
                         </Col>
                     </Row>

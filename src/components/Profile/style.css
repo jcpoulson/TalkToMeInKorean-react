@@ -13,6 +13,7 @@
     text-decoration: underline;
 }
 
+
   
   .profile-menu-link {
     color: #35509a;
@@ -27,4 +28,8 @@
   
   li a:hover {
     background-color: #111111;
+  }
+
+  .picture-edit {
+    width: 100%;
   }

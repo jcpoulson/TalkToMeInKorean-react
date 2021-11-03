@@ -11,7 +11,6 @@ import LearningApp from './components/LearningApp/LearningApp';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignIn/SignUp';
 import Profile from './components/Profile/Profile';
-import ProfileEdit from './components/Profile/ProfileEdit';
 import ComingSoon from './components/ComingSoon/ComingSoon';
 
 import useWindowDimensions from './components/global/useWindowDimensions';
@@ -31,7 +30,6 @@ const App = () => {
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/profile" component={Profile} />
-          <Route path="/profile-edit" component={ProfileEdit} />
           <Route path="/coming-soon" component={ComingSoon} />
 
         </AppContext.Provider>
