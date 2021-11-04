@@ -1,4 +1,4 @@
-import react, { useContext } from 'react';
+import React, { useContext } from 'react';
 import { Row, Col, Typography, Button } from 'antd';
 import { AppContext } from '../../../AppContext';
 

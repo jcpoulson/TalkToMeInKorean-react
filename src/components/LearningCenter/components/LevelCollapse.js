@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Collapse, Layout, Row, Col } from 'antd';
-import { CheckCircleOutlined, CheckCircleFilled } from '@ant-design/icons';
+import { CheckCircleFilled } from '@ant-design/icons';
 import { AppContext } from '../../../AppContext';
 
 const { Panel } = Collapse;

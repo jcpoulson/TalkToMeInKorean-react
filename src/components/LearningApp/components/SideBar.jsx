@@ -1,13 +1,9 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
 import { AppContext } from '../../../AppContext';
 import { useLocation } from 'react-router';
 import { Layout, Menu } from 'antd';
 import {
-    CheckCircleFilled,
-    CheckCircleOutlined,
-    LeftCircleFilled,
-    RightCircleFilled
+    CheckCircleOutlined
   } from '@ant-design/icons';
 
 const { Sider } = Layout;

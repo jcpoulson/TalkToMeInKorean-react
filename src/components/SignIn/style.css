@@ -1,0 +1,26 @@
+.signin-btn {
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: #35509A;
+    width: 100%;
+    padding: 15px;
+}
+
+.signin-btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.email, .password, .firstname, .lastname {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: larger;
+    font-weight: bold;
+}
+
+#password {
+    font-size: larger;
+    font-weight: bold;
+}

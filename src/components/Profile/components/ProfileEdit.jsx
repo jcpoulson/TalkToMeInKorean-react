@@ -103,7 +103,7 @@ const ProfileEdit = () => {
                         <Form.Item> 
                             <Button type="primary" onClick={async () => {
                                     try {
-                                        const updatePicture = await AppState.uploadImage(selectedPic, AppState.user.email);
+                                        await AppState.uploadImage(selectedPic, AppState.user.email);
                                         history.push('/signin');
                                     } catch (error) {
                                         document.getElementById('account-error').style.display = ''

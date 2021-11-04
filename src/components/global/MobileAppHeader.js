@@ -5,10 +5,9 @@ import { AppContext } from '../../AppContext';
 import { Row, Col, Layout, Modal, Button, Menu } from 'antd';
 import BellOutlined from '@ant-design/icons/BellOutlined';
 
-import Hyunwoo from '../../assets/Hyunwoo-Sun.jpg';
 import MobileMenu from '../../assets/mobile-menu.png';
 import TTMIKLogo from '../../assets/ttmik-logo.png';
-import App from '../../App';
+
 
 
 const MobileAppHeader = () => {

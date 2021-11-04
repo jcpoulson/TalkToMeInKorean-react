@@ -1,9 +1,7 @@
-import React, { useContext } from "react"
-import { Row, Col, Radio } from "antd"
-import { AppContext } from "../../../AppContext"
+import React from "react"
+import { Row, Col } from "antd"
 
 const ProfileMenuBar = ({setSelectedMenuItem}) => {
-    const AppState = useContext(AppContext);
     const colStyle = { padding: "2%" }
     
 

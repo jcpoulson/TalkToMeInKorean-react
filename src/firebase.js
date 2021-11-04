@@ -103,7 +103,7 @@ const signIn = async (email, password) => {
 const signUp = async (email, password, firstName, lastName) => {
   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
   
-  const createdUser = await setDoc(doc(db, 'users', userCredential.user.email), {
+  await setDoc(doc(db, 'users', userCredential.user.email), {
     email: userCredential.user.email,
     firstName: firstName,
     lastName: lastName,
