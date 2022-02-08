@@ -1,0 +1,40 @@
+.profile {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.profile-footer {
+    margin-top: auto;
+}
+
+.mobile-billing-title {
+    text-decoration: underline;
+}
+
+
+  
+  .profile-menu-link {
+    color: #35509a;
+    background-color: #d7e3f2;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    width: 25%;
+    padding: 15px;
+  }
+  
+
+  .picture-edit {
+    width: 100%;
+  }
+
+  #firstname-input, #lastname-input, #email-input, #address-input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: larger;
+    font-weight: bold;
+  }
