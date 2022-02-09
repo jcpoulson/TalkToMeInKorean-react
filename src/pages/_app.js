@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
       const user = await persistUser(userCookie);
       setUser(user)
     }
-  })
+  }, [])
 
   return (
     <AppContext.Provider value={{width, user, setUser, getLevels, signIn, signUp, updateUser, uploadImage}}>
