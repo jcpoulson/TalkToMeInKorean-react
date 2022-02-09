@@ -8,7 +8,7 @@
 # This is a clone of "Talk To Me In Korean" built using React
 I will say this as well, this is not a complete clone of TTMIK, a lot of the little features and details were left out for time sake, but the core components and features are present in this React clone.
 
-# This web clone has now been migrated and improved to use the Next.js framework, which provides sever side rendering and many more features.
+***This web clone has now been migrated and improved to use the Next.js framework, which provides sever side rendering and many more features.***
 
 
 # Requirements
