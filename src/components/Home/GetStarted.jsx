@@ -10,7 +10,7 @@ const GetStarted = () => {
     const style = {fontFamily: "Poppins, sans-serif"}
 
     return (
-        <Row justify="center" style={{ backgroundColor: "rgb(215, 227, 242)", padding: "5.5%" }}>
+        <Row justify="center" style={{ backgroundColor: "rgb(215, 227, 242)", padding: "5.5%"}}>
             <Col>
                 {
                     AppState.width > 700 ?

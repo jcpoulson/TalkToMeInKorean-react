@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <div className="home">
       { AppState.width > 970 ? <AppHeader /> : <MobileAppHeader /> }
-      {/* <Banner /> */}
+      <Banner />
       <GetStarted />
       <WhyTTMIK />
       <CanIBecomeFluent />
