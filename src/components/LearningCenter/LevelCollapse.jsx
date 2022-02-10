@@ -41,9 +41,9 @@ class LevelCollapse extends React.Component {
                           <Panel style={this.panelStyle} header={`Level ${index + 1}`} key={index + 1}>
                               {
                                 currentLevel.map((lesson, counter) => (
-                                  <div className="lesson-box" style={lessonBoxStyle}>
+                                  <div className="lesson-box" key={counter} style={lessonBoxStyle}>
                                     <CheckCircleFilled style={checkCirleStyle}/>
-                                    <Link href={`/curriculum/${index + 1}/${counter + 1}`}><h1 className="learning-center-link">Lesson {counter + 1}: {lesson[1].title}</h1></Link>
+                                    <Link href={`/curriculum/${index + 1}/${counter + 1}`} passHref><h1 className="learning-center-link">Lesson {counter + 1}: {lesson[1].title}</h1></Link>
                                   </div>
                                 ))
                               }

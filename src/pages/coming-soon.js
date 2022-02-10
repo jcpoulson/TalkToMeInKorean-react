@@ -18,10 +18,10 @@ const ComingSoon = () => {
             <Layout>
             <Row justify="center" align="middle" gutter={1} style={{minHeight: "360px", height: "100%"}}>
                 <Col style={colStyle} xs={{span: "24"}} sm={{span: "8"}} xl={{span: "5"}}>
-                    <Avatar style={{marginBottom: "10%"}} size={100} src={<Image src={ProfilePic} position="fixed" height={125} width={100} />} />
+                    <Avatar style={{marginBottom: "10%"}} size={100} src={<Image src={ProfilePic} position="fixed" alt="profile-pic" height={125} width={100} />} />
                     <h1>Developer: Jonah Poulson</h1>
-                    <h3><a href="https://github.com/jcpoulson" target="_blank">GitHub</a></h3>
-                    <h3><a href="https://jcpoulson.github.io" target="_blank">Website</a></h3>
+                    <h3><a href="https://github.com/jcpoulson" target="_blank" rel="noreferrer">GitHub</a></h3>
+                    <h3><a href="https://jcpoulson.github.io" target="_blank" rel="noreferrer">Website</a></h3>
                 </Col>
                 <Col style={colStyle} xs={{span: "24"}} sm={{span: "16"}} xl={{span: "10"}}>
                     <h1 style={{borderBottom: "dotted 2px grey", paddingBottom: "5%"}}>Sorry, this section of the application is still being developed</h1>

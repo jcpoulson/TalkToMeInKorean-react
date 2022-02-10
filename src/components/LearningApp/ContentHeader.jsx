@@ -13,7 +13,7 @@ const ContentHeader = (props) => {
             {
                 props.collapsed ? <a onClick={props.toggle} style={arrowStyle}>&#9776;</a> : <a onClick={props.toggle} style={arrowStyle}>&#9776;</a> 
             }
-            <Link href="/"><Image src={TTMIKLogo} position="responsive" height={100} width={175} className="ttmik-logo" alt="Talk To Me In Korean Logo" /></Link>
+            <Link href="/" passHref><Image src={TTMIKLogo} position="responsive" height={100} width={175} className="ttmik-logo" alt="Talk To Me In Korean Logo" /></Link>
         </div>
     )
 }

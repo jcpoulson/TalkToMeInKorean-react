@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }) {
     }
 
     handleCookie()
-  }, [])
+  }, [userCookie])
 
   return (
     <AppContext.Provider value={{width, user, setUser, getLevels, signIn, signUp, updateUser, uploadImage}}>

@@ -35,14 +35,18 @@ const LearningApp = () => {
   const [levelData, setLevelData] = useState(initLevelData())
 
 
-  useEffect(async () => {
-    const levelData = await AppState.getLevels();
-    setLevelData(levelData)
-    if (router.isReady) {
-      setLevelParam(router.query.level);
-      setLessonParam(router.query.lesson)
+  useEffect(() => {
+    const handleLevelRetrieval = async () => {
+      const levelData = await AppState.getLevels();
+      setLevelData(levelData)
+      if (router.isReady) {
+        setLevelParam(router.query.level);
+        setLessonParam(router.query.lesson)
+      }
     }
-  }, [router.isReady, router.query.level, router.query.lesson])
+
+    handleLevelRetrieval()
+  }, [router.isReady, router.query.level, router.query.lesson, AppState])
 
 
   const mobileSidebarRender = () => {

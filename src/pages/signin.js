@@ -21,7 +21,7 @@ const SignIn = () => {
         <div className="signin-form">
             <Row justify="center">
                 <Col style={{marginTop: "5%"}}>
-                    <Link href="/">
+                    <Link href="/" passHref>
                         <Image src={TTMIKLogo} alt="ttmik logo" className="ttmik-logo" />
                     </Link>
                 </Col>

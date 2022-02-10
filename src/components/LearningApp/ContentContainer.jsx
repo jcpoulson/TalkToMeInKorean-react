@@ -31,8 +31,8 @@ const ContentContainer = (props) => {
             <Row justify="start">
               <Col>
                 {
-                  lessonContent.map(line => (
-                    <h1 className="content-line">{line}</h1>
+                  lessonContent.map((line, index) => (
+                    <h1 key={index} className="content-line">{line}</h1>
                   ))
                 }
               </Col>
