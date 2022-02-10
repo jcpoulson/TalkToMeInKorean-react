@@ -1,5 +1,9 @@
 # "Hello There" or "안녕하세요"
 
+### Active Deployments
+
+[Next.js/React Version](https://ttmik.vercel.app/)
+[React.js Version](https://ttmik.netlify.app/)
 
 
 [Talk To Me In Korean](https://talktomeinkorean.com/) is a very popular (If not most popular) online resource for learning the Korean language, as I myself love the resource but not only that, I'm sure there numbers speak for themselves as far as their popularity, impact and outreach goes
