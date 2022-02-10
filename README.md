@@ -2,7 +2,7 @@
 
 ### Active Deployments
 
-[Next.js/React Version](https://ttmik.vercel.app/)
+[Next.js/React Version](https://ttmik.vercel.app/)  <br>
 [React.js Version](https://ttmik.netlify.app/)
 
 
