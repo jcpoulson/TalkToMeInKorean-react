@@ -20,11 +20,15 @@ function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState({})
   const userCookie = Cookies.get('authenticatedUser')
 
-  useEffect(async () => {
-    if (userCookie) {
-      const user = await persistUser(userCookie);
-      setUser(user)
+  useEffect(() => {
+    const handleCookie = async () => {
+      if (userCookie) {
+        const user = await persistUser(userCookie);
+        setUser(user)
+      }
     }
+
+    handleCookie()
   }, [])
 
   return (
