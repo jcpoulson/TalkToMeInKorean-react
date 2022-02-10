@@ -6,7 +6,7 @@ const Curriculum = () => {
 
     useEffect(() => {
         router.push('/learningcenter');
-    }, []);
+    }, [router]);
 
     return (
         <></>
